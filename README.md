@@ -66,6 +66,32 @@ Aqui, cada ciclo da espiral incrementa uma funcionalidade: CPF, cargo, senha e i
 
 ---
 
+## Resumo dos Testes Automatizados
+
+Os testes automatizados cobrem todos os requisitos de negócio e garantem a robustez do sistema. Veja abaixo o que é testado:
+
+### Validação de CPF
+- Aceita: 11 dígitos numéricos (ex: "12345678901")
+- Rejeita: Menos de 11 dígitos, caracteres não numéricos (ex: "abcdefghijk", "123")
+
+### Validação de Cargo
+- Aceita: Qualquer valor não vazio, até 24 caracteres, apenas letras (maiúsculas/minúsculas), espaço e hífen
+  - Exemplos válidos: "professor", "CEO", "Supervisor de Area", "Gerente-Adjunto", "aluno"
+- Rejeita: Vazio, NULL, mais de 24 caracteres, números, caracteres especiais
+  - Exemplos inválidos: "", NULL, "xxxxxxxxxxxxxxxxxxxxxxxxx" (25+), "Gerente123", "Gerente!"
+
+### Validação de Senha
+- Aceita: Mínimo 8 caracteres, pelo menos uma maiúscula, uma minúscula, um dígito e um caractere especial
+  - Exemplo válido: "Senha@123"
+- Rejeita: Ausência de qualquer requisito acima
+  - Exemplos inválidos: "senha@123" (sem maiúscula), "SENHA@123" (sem minúscula), "Senha1234" (sem especial), "Senha@abc" (sem dígito), "S@1a" (curta)
+
+### Criação de Usuário
+- Só é possível criar usuário se CPF, senha e cargo forem todos válidos
+- Testes garantem que combinações inválidas são rejeitadas
+
+---
+
 ## Como compilar e rodar
 
 ```bash
@@ -83,3 +109,9 @@ gcc -o test_user test_user.c user.c
 - O código demonstra a evolução e integração dos módulos, seguindo TDD e espiral.
 - Os testes em `test_user.c` mostram logs detalhados de cada etapa.
 - O README detalha as decisões e etapas do desenvolvimento para facilitar a compreensão e apresentação.
+- **Todos os testes podem ser executados rodando:**
+  ```bash
+  gcc -o test_user test_user.c user.c
+  ./test_user
+  ```
+  O resultado exibirá quais casos passaram e quais regras estão sendo validadas.

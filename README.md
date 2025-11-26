@@ -70,6 +70,46 @@ Aqui, cada ciclo da espiral incrementa uma funcionalidade: CPF, cargo, senha e i
 
 ---
 
+## Etapas do TDD Separadas (Red-Green-Refactor)
+
+Para cada funcionalidade (CPF, senha, cargo), há uma subpasta em `etapas_tdd/` com arquivos separados para cada etapa do ciclo TDD:
+
+- **Red:** Teste inicial que falha (ou nem compila), mostrando o início do ciclo.
+- **Green:** Implementação mínima para passar o teste básico.
+- **Refactor:** Implementação final, comentada e com testes completos.
+
+### Como visualizar o progresso do TDD
+
+1. Entre na pasta da etapa desejada, por exemplo:
+   ```bash
+   cd etapas_tdd/cpf
+   ```
+2. Compile e execute cada etapa:
+   - **Red:**
+     ```bash
+     gcc -o test_cpf_red test_cpf_red.c validate_cpf_red.c && ./test_cpf_red
+     ```
+     (Deve falhar ou nem compilar)
+   - **Green:**
+     ```bash
+     gcc -o test_cpf_green test_cpf_green.c validate_cpf_green.c && ./test_cpf_green
+     ```
+     (Deve passar apenas o teste básico)
+   - **Refactor:**
+     ```bash
+     gcc -o test_cpf_refactor test_cpf_refactor.c validate_cpf_refactor.c && ./test_cpf_refactor
+     ```
+     (Todos os testes passam, código comentado)
+
+Repita o mesmo para as pastas `senha` e `cargo`.
+
+### O que observar nos logs
+- O log de cada execução mostra claramente o ciclo Red-Green-Refactor.
+- Cada arquivo está comentado linha a linha para facilitar a compreensão do progresso.
+- Assim, a professora pode ver a evolução do código e dos testes em cada etapa do TDD.
+
+---
+
 ## Resumo dos Testes Automatizados
 
 Os testes automatizados cobrem todos os requisitos de negócio e garantem a robustez do sistema. Veja abaixo o que é testado:

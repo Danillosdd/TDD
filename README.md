@@ -1,6 +1,3 @@
-
-# Guia do Ciclo TDD - Integração de CPF, Cargo e Senha
-
 # Guia do Ciclo TDD - Integração de CPF, Cargo e Senha
 
 <!--

@@ -2,6 +2,12 @@
   <img src="tdd.webp" alt="Ciclo TDD" width="350"/>
 </p>
 
+---
+
+**Autores:** Danillo | Giulianna | Matheus | Victor
+
+---
+
 # Guia do Ciclo TDD - Integração de CPF, Cargo e Senha
 
 <!--

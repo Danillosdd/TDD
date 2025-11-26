@@ -1,9 +1,9 @@
-#include "user.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
 
+#include "user.h"      // Header com definições e struct Usuario
+#include <stdio.h>      // Para funções de entrada/saída (não usado aqui, mas útil para debug)
+#include <stdlib.h>     // Para malloc e free
+#include <string.h>     // Para manipulação de strings
+#include <ctype.h>      // Para funções de verificação de caracteres
 
 /*
  * user.c
@@ -14,57 +14,65 @@
  * criação e remoção de usuário.
  */
 
-#include "user.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
 
-// Lista de cargos válidos
+// Lista de cargos válidos (último elemento NULL para indicar fim)
 const char* cargos_validos[] = {"professor", "ceo", "gerente", NULL};
 
+
+// Valida se o CPF tem 11 dígitos numéricos
 bool validate_cpf(const char *cpf) {
-    // Implementação simplificada: verifica se tem 11 dígitos
-    if (strlen(cpf) != 11) return false;
-    for (int i = 0; i < 11; i++) {
-        if (!isdigit(cpf[i])) return false;
+    if (strlen(cpf) != 11) return false; // Verifica se o tamanho é 11
+    for (int i = 0; i < 11; i++) {       // Para cada caractere
+        if (!isdigit(cpf[i])) return false; // Se não for dígito, retorna falso
     }
     // Aqui poderia entrar a validação real do CPF
-    return true;
+    return true; // Se passou por tudo, é válido
 }
 
+
+// Valida se o cargo está na lista de cargos válidos
 bool validate_cargo(const char *cargo) {
-    for (int i = 0; cargos_validos[i] != NULL; i++) {
-        if (strcmp(cargo, cargos_validos[i]) == 0) return true;
+    for (int i = 0; cargos_validos[i] != NULL; i++) { // Percorre lista
+        if (strcmp(cargo, cargos_validos[i]) == 0) return true; // Se encontrou, é válido
     }
-    return false;
+    return false; // Não encontrou, inválido
 }
 
+
+// Valida se a senha atende todos os requisitos
 bool validate_password(const char *senha) {
-    int len = strlen(senha);
-    if (len < 8) return false;
-    int has_upper = 0, has_lower = 0, has_digit = 0, has_special = 0;
+    int len = strlen(senha); // Tamanho da senha
+    if (len < 8) return false; // Deve ter pelo menos 8 caracteres
+    int has_upper = 0, has_lower = 0, has_digit = 0, has_special = 0; // Flags para requisitos
     for (int i = 0; i < len; i++) {
-        if (isupper(senha[i])) has_upper = 1;
-        else if (islower(senha[i])) has_lower = 1;
-        else if (isdigit(senha[i])) has_digit = 1;
-        else has_special = 1;
+        if (isupper(senha[i])) has_upper = 1;      // Tem maiúscula
+        else if (islower(senha[i])) has_lower = 1; // Tem minúscula
+        else if (isdigit(senha[i])) has_digit = 1; // Tem dígito
+        else has_special = 1;                      // Tem especial
     }
+    // Só retorna true se todos os requisitos forem atendidos
     return has_upper && has_lower && has_digit && has_special;
 }
 
+
+// Cria um usuário se todos os dados forem válidos
 Usuario* create_user(const char *cpf, const char *senha, const char *cargo) {
+    // Se qualquer dado for inválido, retorna NULL
     if (!validate_cpf(cpf) || !validate_password(senha) || !validate_cargo(cargo)) {
         return NULL;
     }
+    // Aloca memória para o usuário
     Usuario *user = (Usuario*)malloc(sizeof(Usuario));
-    if (!user) return NULL;
+    if (!user) return NULL; // Falha na alocação
+    // Copia os dados para a struct
     strncpy(user->cpf, cpf, CPF_SIZE);
     strncpy(user->senha, senha, PASSWORD_SIZE);
     strncpy(user->cargo, cargo, CARGO_SIZE);
-    return user;
+    return user; // Retorna ponteiro para o usuário criado
 }
 
+
+// Libera a memória de um usuário criado
 void delete_user(Usuario *user) {
-    if (user) free(user);
+    if (user) free(user); // Só libera se não for NULL
 }

@@ -9,7 +9,6 @@
  * user.c
  * Implementação das funções do sistema de usuários.
  * Inclui validação de CPF (11 dígitos numéricos),
- * validação de cargo (professor, ceo, gerente),
  * validação de senha (mínimo 8 caracteres, maiúscula, minúscula, dígito, especial),
  * criação e remoção de usuário.
  */

@@ -28,13 +28,13 @@ void test_validate_cpf() {
 // Testa a função de validação de cargo
 void test_validate_cargo() {
     printf("Testando validate_cargo...\n");
-    assert(validate_cargo("professor") == true); // Cargo válido
+    assert(validate_cargo("professor") == true); // Aceita letras minúsculas
     printf("  ✓ Cargo 'professor' aceito\n");
-    assert(validate_cargo("CEO") == true); // Maiúsculas aceitas
+    assert(validate_cargo("CEO") == true); // Aceita letras maiúsculas
     printf("  ✓ Cargo 'CEO' aceito\n");
-    assert(validate_cargo("Gerente de Projetos") == true); // Espaço aceito
+    assert(validate_cargo("Supervisor de Area") == true); // Aceita espaço
     printf("  ✓ Cargo com espaço aceito\n");
-    assert(validate_cargo("Gerente-Adjunto") == true); // Hífen aceito
+    assert(validate_cargo("Gerente-Adjunto") == true); // Aceita hífen
     printf("  ✓ Cargo com hífen aceito\n");
     assert(validate_cargo("") == false); // Vazio
     printf("  ✓ Cargo vazio rejeitado\n");
@@ -73,19 +73,27 @@ void test_validate_password() {
 // Testa a função de criação de usuário
 void test_create_user() {
     printf("Testando create_user...\n");
-    Usuario *user = create_user("12345678901", "Senha@123", "professor"); // Válido
-    assert(user != NULL); // Deve criar
-    printf("  ✓ Usuário válido criado\n");
-    delete_user(user);    // Libera
+    Usuario *user = create_user("12345678901", "Senha@123", "professor");
+    assert(user != NULL);
+    printf("  ✓ Usuário com cargo 'professor' criado\n");
+    delete_user(user);
+    user = create_user("12345678901", "Senha@123", "Supervisor de Area");
+    assert(user != NULL);
+    printf("  ✓ Usuário com cargo 'Supervisor de Area' criado\n");
+    delete_user(user);
+    user = create_user("12345678901", "Senha@123", "Gerente-Adjunto");
+    assert(user != NULL);
+    printf("  ✓ Usuário com cargo 'Gerente-Adjunto' criado\n");
+    delete_user(user);
     user = create_user("1234567890", "Senha@123", "professor"); // CPF inválido
     assert(user == NULL);
     printf("  ✓ Usuário com CPF inválido rejeitado\n");
     user = create_user("12345678901", "senha@123", "professor"); // Senha inválida
     assert(user == NULL);
     printf("  ✓ Usuário com senha inválida rejeitado\n");
-    user = create_user("12345678901", "Senha@123", "aluno");     // Cargo válido (agora permitido)
+    user = create_user("12345678901", "Senha@123", "aluno"); // Cargo válido (qualquer texto permitido)
     assert(user != NULL);
-    printf("  ✓ Usuário com cargo 'aluno' criado (válido)\n");
+    printf("  ✓ Usuário com cargo 'aluno' criado\n");
     delete_user(user);
     printf("create_user OK!\n\n");
 }

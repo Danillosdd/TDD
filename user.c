@@ -15,10 +15,6 @@
  */
 
 
-// Lista de cargos válidos (último elemento NULL para indicar fim)
-const char* cargos_validos[] = {"professor", "ceo", "gerente", NULL};
-
-
 // Valida se o CPF tem 11 dígitos numéricos
 bool validate_cpf(const char *cpf) {
     if (strlen(cpf) != 11) return false; // Verifica se o tamanho é 11
@@ -30,12 +26,17 @@ bool validate_cpf(const char *cpf) {
 }
 
 
-// Valida se o cargo está na lista de cargos válidos
+// Valida o campo cargo: obrigatório, tamanho máximo e caracteres válidos
 bool validate_cargo(const char *cargo) {
-    for (int i = 0; cargos_validos[i] != NULL; i++) { // Percorre lista
-        if (strcmp(cargo, cargos_validos[i]) == 0) return true; // Se encontrou, é válido
+    if (cargo == NULL) return false; // Campo obrigatório
+    int len = strlen(cargo);
+    if (len == 0 || len >= CARGO_SIZE) return false; // Não pode ser vazio nem ultrapassar o limite
+    for (int i = 0; i < len; i++) {
+        if (!(cargo[i] == ' ' || (cargo[i] >= 'A' && cargo[i] <= 'Z') || (cargo[i] >= 'a' && cargo[i] <= 'z') || (cargo[i] == '-'))) {
+            return false; // Só aceita letras, espaço e hífen
+        }
     }
-    return false; // Não encontrou, inválido
+    return true;
 }
 
 

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="tdd.webp" alt="Ciclo TDD" width="350"/>
+  <img src="tdd.png" alt="Ciclo TDD" width="350"/>
 </p>
 
 # Guia do Ciclo TDD - Integração de CPF, Cargo e Senha

@@ -3,6 +3,13 @@
 
 #include <stdbool.h>
 
+/*
+ * user.h
+ * Arquivo de cabeçalho do sistema de usuários.
+ * Define a estrutura Usuario e declara as funções de validação (CPF, senha, cargo),
+ * além das funções de criação e remoção de usuário.
+ */
+
 #define CPF_SIZE 12
 #define PASSWORD_SIZE 100
 #define CARGO_SIZE 20

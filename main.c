@@ -1,3 +1,10 @@
+
+/*
+ * main.c
+ * Exemplo de uso do sistema de usuários.
+ * Tenta criar um usuário com dados válidos e exibe o resultado no terminal.
+ */
+
 #include <stdio.h>
 #include "user.h"
 

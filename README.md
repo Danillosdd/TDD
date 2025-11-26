@@ -1,6 +1,16 @@
 
 # Guia do Ciclo TDD - Integração de CPF, Cargo e Senha
 
+# Guia do Ciclo TDD - Integração de CPF, Cargo e Senha
+
+<!--
+README.md
+
+Documentação detalhada do projeto de integração de CPF, cargo e senha.
+Explica o ciclo TDD, as etapas do desenvolvimento, a estrutura dos arquivos e como compilar e rodar o sistema.
+Serve como guia para apresentação e entendimento do projeto.
+-->
+
 Este documento explica o passo a passo do desenvolvimento do sistema integrado de usuário (CPF, cargo e senha) utilizando a metodologia **TDD (Test Driven Development)** e a abordagem em espiral.
 
 O TDD segue o ciclo **Red-Green-Refactor**:

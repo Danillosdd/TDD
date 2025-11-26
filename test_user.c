@@ -2,6 +2,18 @@
 #include <assert.h>
 #include "user.h"
 
+
+/*
+ * test_user.c
+ * Arquivo de testes automatizados para o sistema de usuários.
+ * Testa as funções de validação de CPF, cargo, senha e a criação de usuário.
+ * Exibe logs detalhados no terminal mostrando o resultado de cada teste.
+ */
+
+#include <stdio.h>
+#include <assert.h>
+#include "user.h"
+
 void test_validate_cpf() {
     printf("Testando validate_cpf...\n");
     assert(validate_cpf("12345678901") == true);

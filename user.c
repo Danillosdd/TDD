@@ -4,6 +4,22 @@
 #include <string.h>
 #include <ctype.h>
 
+
+/*
+ * user.c
+ * Implementação das funções do sistema de usuários.
+ * Inclui validação de CPF (11 dígitos numéricos),
+ * validação de cargo (professor, ceo, gerente),
+ * validação de senha (mínimo 8 caracteres, maiúscula, minúscula, dígito, especial),
+ * criação e remoção de usuário.
+ */
+
+#include "user.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
 // Lista de cargos válidos
 const char* cargos_validos[] = {"professor", "ceo", "gerente", NULL};
 

@@ -8,6 +8,7 @@
  * Arquivo de testes automatizados para o sistema de usuários.
  * Testa as funções de validação de CPF, cargo, senha e a criação de usuário.
  * Exibe logs detalhados no terminal mostrando o resultado de cada teste.
+ * gcc -o test_user test_user.c user.c && ./test_user
  */
 
 #include <stdio.h>
